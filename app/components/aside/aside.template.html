@@ -1,6 +1,6 @@
 <aside>
-  <a ui-sref="contacts">click</a>
-  <span ng-click="$ctrl.openContacts()"><a href="">Contacts</a></span>
+  <a ui-sref="mail.contacts">Contacts<span class="badge">{{$ctrl.contactsCount}}</span></a>
+  <a href="#" ng-click="$ctrl.logout()" class="logout">Logout</a>
   <hr />
   <ul>
     <li ng-click="$ctrl.openBox('inbox')"><a href="">Inbox<span class="badge">{{$ctrl.inboxCount}}</span></a></li>

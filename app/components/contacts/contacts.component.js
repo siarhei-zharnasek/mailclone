@@ -3,7 +3,7 @@ angular
   .component('contacts', {
     templateUrl: 'components/contacts/contacts.template.html',
     controller: ['Contacts', function (Contacts) {
-      this.contacts = Contacts;
-      console.dir(Contacts)
+      var vm = this;
+      Contacts.then((res) => vm.contacts = res);
     }]
   })

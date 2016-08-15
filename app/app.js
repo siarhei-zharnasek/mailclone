@@ -6,23 +6,39 @@ angular.module('myApp', [
   'letterList',
   'mail',
   'letter',
-  'contacts'
-])
+  'contacts',
+  'login'
+  ])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/inbox');
+    $urlRouterProvider.otherwise('/mail/inbox');
 
     $stateProvider
-      .state('box', {
-        url: '/:box',
+      .state('mail', {
+        abstract: true,
+        template: '<aside-component></aside-component><ui-view class="container"></ui-view>'
+      })
+      .state('mail.box', {
+        url: '/mail/:box',
         template: '<letter-list></letter-list>'
       })
-      .state('letter', {
-        url: '/:box/:letterId',
+      .state('mail.letter', {
+        url: '/mail/:box/:letterId',
         template: '<single-letter></single-letter>'
       })
-      .state('contacts', {
+      .state('mail.contacts', {
         url: '/contacts',
         template: '<contacts></contacts>'
       })
-}]);
+      .state('login', {
+        url: '/login',
+        template: '<login></login>'
+      })
+  }])
+  .run(['$rootScope', 'loginCheck', '$state', function ($rootScope, loginCheck, $state) {
+    $rootScope.$on('$locationChangeStart', function (event) {
+      if (!loginCheck.isAuthenticated()) {
+        $state.go('login');
+      }
+    })
+  }])

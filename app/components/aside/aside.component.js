@@ -2,7 +2,7 @@ angular
   .module('asideModule')
   .component('asideComponent', {
     templateUrl: 'components/aside/aside.template.html',
-    controller: ['Letters', '$state', function (Letters, $state) {
+    controller: ['Letters', '$state', 'Contacts', 'loginCheck', function (Letters, $state, Contacts, loginCheck) {
       var vm = this;
 
       Letters.inbox().then(function(response) {
@@ -17,12 +17,16 @@ angular
         vm.trashCount = response.data.length;
       });
 
+      Contacts.then(function(response) {
+        vm.contactsCount = response.length;
+      });
+
       this.openBox = function (box) {
-        $state.go('box', { box: box })
+        $state.go('mail.box', { box: box })
       }
 
-      this.openContacts = function () {
-        $state.go('contacts');
+      this.logout = function () {
+        loginCheck.logout();
       }
     }]
   })

@@ -1,5 +1,7 @@
+<h1>{{ $ctrl.box | uppercase }}</h1>
+<h3>Author</h3><span>Theme</span>
 <ul class="letter-list">
   <li ng-repeat="letter in $ctrl.letters" ng-click="$ctrl.openLetter($index, $ctrl.box)">
-    <a href="" ng-bind="letter.author"></a>
+    <a href="" ng-bind="letter.author"></a><span>{{letter.title}}</span>
   </li>
 </ul>

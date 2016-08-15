@@ -13,26 +13,33 @@ angular
       },
     }
   }])
-  .factory('Contacts', ['$http', function ($http) {
-    /*var result = [];
-    var set = new Set();
+  .factory('Contacts', ['$http', '$q', function ($http, $q) {
+    var result = [];
 
-    (function () {
-      $http.get('letters/inbox.json')
-        .then(res => result.concat(res.data))
-        .then(() => {
-          $http.get('letters/outbox.json')
-            .then(res => result = result.concat(res.data))
-            .then(() => {
-              $http.get('letters/trash.json')
-                .then(res => result = result.concat(res.data))
-                .then(() => {
-                  result.forEach(node => set.add(node.author))
-                })
-            })
-        })
-    })();
+    return $q.all([
+      $http.get('letters/inbox.json'),
+      $http.get('letters/outbox.json'),
+      $http.get('letters/trash.json')
+      ])
+      .then(response => {
+        response.forEach((item) => result = result.concat(item.data));
+        var temp = new Set(result);
+        result = [];
+        temp.forEach(item => result = result.concat(item));
+        return result;
+      });
+  }])
+  .service('loginCheck', ['$cookies', '$state', function ($cookies, $state) {
+    this.isAuthenticated = function () {
+      return $cookies.get('login') ? true : false;
+    }
 
-    return set;*/
-    return [{'author': '1'}, {'author': '2'}]
+    this.auth = function (login) {
+      $cookies.put('login', login);
+    }
+
+    this.logout = function () {
+      $cookies.remove('login');
+      $state.go('login');
+    }
   }])

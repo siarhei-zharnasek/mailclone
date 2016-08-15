@@ -13,13 +13,12 @@
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-  <aside-component></aside-component>
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ui-view class="container"></div>
+  <div ui-view></div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -27,6 +26,7 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="core/mail.module.js"></script>
   <script src="core/mailInbox.service.js"></script>
   <script src="app.js"></script>
@@ -38,5 +38,7 @@
   <script src="components/letter-list/letter-list.component.js"></script>
   <script src="components/contacts/contacts.module.js"></script>
   <script src="components/contacts/contacts.component.js"></script>
+  <script src="components/login/login.module.js"></script>
+  <script src="components/login/login.component.js"></script>
 </body>
 </html>

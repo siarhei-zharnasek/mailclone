@@ -9,7 +9,7 @@ angular
       Letters[box]().then(response => vm.letters = response.data);
 
       this.openLetter = function (letterId, box) {
-        $state.go('letter', { box: box, letterId: letterId })
+        $state.go('mail.letter', { box: box, letterId: letterId })
       }
     }]
   });

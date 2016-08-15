@@ -1,2 +1,2 @@
 angular
-  .module('mail', ['ui.router']);
+  .module('mail', ['ui.router', 'ngCookies']);
