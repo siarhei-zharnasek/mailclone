@@ -2,13 +2,27 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-  'ngRoute',
-  'myApp.view1',
-  'myApp.view2',
-  'myApp.version'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+  'asideModule',
+  'letterList',
+  'mail',
+  'letter',
+  'contacts'
+])
+  .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
+    $urlRouterProvider.otherwise('/inbox');
+
+    $stateProvider
+      .state('box', {
+        url: '/:box',
+        template: '<letter-list></letter-list>'
+      })
+      .state('letter', {
+        url: '/:box/:letterId',
+        template: '<single-letter></single-letter>'
+      })
+      .state('contacts', {
+        url: '/contacts',
+        template: '<contacts></contacts>'
+      })
 }]);

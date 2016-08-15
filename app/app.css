@@ -28,3 +28,15 @@
   content: "";
   padding: 0;
 }
+
+aside-component,
+.container {
+  display: inline-block;
+  width: 200px;
+  margin-top: 20px;
+}
+
+ul > li {
+  list-style-type: none;
+  margin-top: 6px;
+}

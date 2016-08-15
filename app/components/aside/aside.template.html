@@ -1,0 +1,10 @@
+<aside>
+  <a ui-sref="contacts">click</a>
+  <span ng-click="$ctrl.openContacts()"><a href="">Contacts</a></span>
+  <hr />
+  <ul>
+    <li ng-click="$ctrl.openBox('inbox')"><a href="">Inbox<span class="badge">{{$ctrl.inboxCount}}</span></a></li>
+    <li ng-click="$ctrl.openBox('outbox')"><a href="">Outbox<span class="badge">{{$ctrl.outboxCount}}</span></a></li>
+    <li ng-click="$ctrl.openBox('trash')"><a href="">Trash<span class="badge">{{$ctrl.trashCount}}</span></a></li>
+  </ul>
+</aside>
